@@ -1,0 +1,17 @@
+.sijpinner-container{
+  display:inline-block;
+  vertical-align:top;
+}
+
+.sijpinner-container input{
+  width:64px;
+}
+
+.sijpinner-arrow{
+  cursor: pointer;
+}
+
+body{
+  /* uncomment for rtl support  */
+  /*direction:rtl;*/
+}

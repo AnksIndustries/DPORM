@@ -1,0 +1,43 @@
+{% extends 'mro/base.html' %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load mro_bootstrap %}
+{% load render_table from django_tables2 %}
+
+{% block extra_js %}
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/core.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/admin/RelatedObjectLookups.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/jquery.init.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}admin/js/actions.js"></script>
+<script>
+// use bootstrap datepicker for redering 
+django.jQuery(function(){
+    django.jQuery('.dateinput').datepicker({'format': 'dd/mm/yyyy'});
+    django.jQuery('#id_item').select2();
+});
+</script>
+{% endblock %}
+    
+{% block content %}
+
+{% crispy form %}
+
+<div class="form-actions">
+    <a class="btn btn-primary btn-submit" href="#" onClick="django.jQuery('form').submit();" >{% trans 'Issue warehouse action' %}</a>
+</div>
+
+<script>
+django.jQuery(function() {
+    django.jQuery('.filters').on("click", function(event){
+        django.jQuery('#form-filter').val(django.jQuery(this).data('val'));
+        django.jQuery('#search-form').submit();
+    });
+    
+    django.jQuery('.paginators').on("click", function(event){
+        django.jQuery('#form-page').val(django.jQuery(this).data('page'));
+        django.jQuery('#search-form').submit();
+    });
+});
+</script>
+
+{% endblock %}
